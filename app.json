@@ -1,0 +1,51 @@
+{
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    "heroku-redis:hobby-dev"
+  ],
+  "environments": {
+    "test": {
+      "addons": [
+        "heroku-postgresql:hobby-dev",
+        "heroku-redis:hobby-dev"
+      ],
+      "scripts": {
+        "test": "rails spec"
+      },
+      "env": {
+        "SMTP_ADDRESS": "smtp.example.com",
+        "SMTP_DOMAIN": "example.com",
+        "SMTP_PASSWORD": "password",
+        "SMTP_USERNAME": "usernamne"
+      }
+    }
+  },
+  "env": {
+    "SMTP_ADDRESS": {
+      "required": true
+    },
+    "SMTP_DOMAIN": {
+      "required": true
+    },
+    "SMTP_PASSWORD": {
+      "required": true
+    },
+    "SMTP_USERNAME": {
+      "required": true
+    }
+  }
+}

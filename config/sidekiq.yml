@@ -1,0 +1,18 @@
+---
+:queues:
+  - ["critical", 6]
+  - ["high", 4]
+  - ["default", 2]
+  - ["low", 1]
+
+:concurrency: 10
+staging:
+  :concurrency: 10
+production:
+  :concurrency: 10
+
+:schedule:
+  ExampleJob:
+      cron: "0 * * * *"
+      class: "ExampleJob"
+      args: [5]
